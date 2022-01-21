@@ -30,10 +30,10 @@ param (
 
 $nodename = $env:computerName
 
-$validator = $ValidatorKey
+$validator = $ValidatorKey.Replace("\n", "`n")
 $pathValidationKey = "C:\chef\" + $ChefValidationClientName + ".pem"
 
-Set-Content -Path C:\chef\scerus-validator.pem -Value $validator
+Set-Content -Path $pathValidationKey -Value $validator
 
 $clientrb = @"
 chef_license            'accept'
