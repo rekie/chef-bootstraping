@@ -31,9 +31,9 @@ param (
 $nodename = $env:computerName
 
 $pathValidationKey = "C:\chef\" + $ChefValidationClientName + ".pem"
-$validator = $ValidatorKey.Replace("*lb*", "`n")
+$validator = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($ValidatorKey))
 
-Set-Content -Path $pathValidationKey -Value "$validator"
+Set-Content -Path $pathValidationKey -Value $validator
 
 $clientrb = @"
 chef_license            'accept'
