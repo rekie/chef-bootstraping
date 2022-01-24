@@ -30,8 +30,8 @@ param (
 
 $nodename = $env:computerName
 
-$validator = $ValidatorKey.Replace("\n", "`n")
 $pathValidationKey = "C:\chef\" + $ChefValidationClientName + ".pem"
+$validator = $ValidatorKey.Replace("\n", "`n")
 
 Set-Content -Path $pathValidationKey -Value $validator
 
