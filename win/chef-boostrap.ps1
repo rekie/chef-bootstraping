@@ -30,7 +30,7 @@ param (
 
 $nodename = $env:computerName
 
-$pathValidationKey = "C:\chef\client.pem"
+$pathValidationKey = "C:\chef\" + $ChefValidationClientName + ".pem"
 $validator = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($ValidatorKey))
 
 Set-Content -Path $pathValidationKey -Value $validator
