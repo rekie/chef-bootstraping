@@ -30,7 +30,7 @@ param (
 
 $nodename = $env:computerName
 
-$pathValidationKey = "C:\chef\" + $ChefValidationClientName + ".pem"
+$pathValidationKey = \'C:\chef\\' + $ChefValidationClientName + \'.pem\'
 $validator = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($ValidatorKey))
 
 Set-Content -Path $pathValidationKey -Value $validator
@@ -38,12 +38,12 @@ Set-Content -Path $pathValidationKey -Value $validator
 $clientrb = @"
 chef_license            'accept'
 log_location            STDOUT
-chef_server_url         "$ChefServerURL"
-validation_client_name  "$ChefValidationClientName"
-validation_key          "$pathValidationKey"
-node_name               "$nodename"
-policy_group            "$policygroup"
-policy_name             "$policyname"
+chef_server_url         '$ChefServerURL'
+validation_client_name  '$ChefValidationClientName'
+validation_key          '$pathValidationKey'
+node_name               '$nodename'
+policy_group            '$policygroup'
+policy_name             '$policyname'
 "@
 
 Set-Content -Path c:\chef\client.rb -Value $clientrb
